@@ -58,4 +58,9 @@ public class ProductRepository {
             products.remove(product);
         }
     }
+
+    public Product getProductById(Long productId) 
+	{
+		return products.stream().filter(p -> p.getId() == productId).findFirst().get();
+	}
 }
