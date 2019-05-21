@@ -40,9 +40,10 @@ public class ProductRepository {
     /**
      * @return All products from the inventory
      */
-    public Product[] findAll()
+    public List<Product> findAll()
     {
-        return products.stream().filter(p -> p.getStock() > 0).sorted(Comparator.comparing(Product::getName)).toArray(Product[]::new);
+        //CH :This was changed from array to List
+    	return products.stream().filter(p -> p.getStock() > 0).sorted(Comparator.comparing(Product::getName)).collect(Collectors.toList());
     }
 
     /**
