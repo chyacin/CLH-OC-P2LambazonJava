@@ -29,10 +29,9 @@ public class ProductService {
 	/**
 	 * @return all products from the inventory
 	 */
-	public Product[] getAllProducts() {
-
-		// TODO change the return type from array to List<T> and propagate the change
-		// throughout the application
+	public List<Product> getAllProducts() 
+	{	
+		//CH : The method type was changed from array to List<T> 
 		return productRepository.findAll();
 	}
 
