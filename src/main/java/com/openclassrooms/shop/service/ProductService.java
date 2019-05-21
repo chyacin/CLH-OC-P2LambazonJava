@@ -53,7 +53,10 @@ public class ProductService {
 	 */
 	public void updateProductQuantities(Long productId, int quantity)
 	{
-
-		// TODO implement the method
+        // CH: updating inventory after orders
+		Product product = getProductById(productId);
+		if (product != null) {
+			product.setStock(product.getStock()-quantity);	
+		}
 	}
 }
