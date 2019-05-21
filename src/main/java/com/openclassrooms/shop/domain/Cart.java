@@ -72,10 +72,14 @@ public class Cart {
      */
     public Product findProductInCartLines(Long productId)
     {
-        // TODO implement the method
+    	//CH : find product in the cartline by Id
+    	for(CartLine cartLine: cartLineList) {
+    	   if (cartLine.getProduct().getId().equals(productId)) {  		 
+    	   }
+    	     return cartLine.getProduct();	 
+    	}
         return null;
     }
-
     /**
      *
      * @param index index of the cartLine
