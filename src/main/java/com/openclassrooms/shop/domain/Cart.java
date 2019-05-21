@@ -5,13 +5,16 @@ import java.util.List;
 import java.util.Optional;
 
 public class Cart {
+	
+	List<CartLine> cartLineList = new ArrayList<>();
+	//CH : A new list was created to facilitate the cartline
 
     /**
      *
      * @return the actual cartline list
      */
     public List<CartLine> getCartLineList() {
-        return new ArrayList<>();
+        return cartLineList;
     }
 
     /**
@@ -19,9 +22,18 @@ public class Cart {
      * @param product getProductById to be added
      * @param quantity the quantity
      */
-    public void addItem(Product product, int quantity) {
-        // TODO implement the method
+    public void addItem(Product product, int quantity)
+    {
+        
+    	for (CartLine cartLine : cartLineList) {
+    		if (cartLine.getProduct().equals(product)){
+    			cartLine.setQuantity(quantity+cartLine.getQuantity());
+    	  return;		
+    		}
+    	}
+        cartLineList.add(new CartLine(product, quantity));	
     }
+
 
     /**
      * Removes a getProductById form the cart
