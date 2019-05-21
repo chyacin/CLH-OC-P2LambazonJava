@@ -42,10 +42,10 @@ public class ProductService {
 	 */
 	public Product getProductById(Long productId)
 	{
-		// TODO implement the method
-		return null;
-
+		
+		return productRepository.getProductById(productId);
 	}
+
 
 	/**
 	 * Update the quantities left for each product in the inventory depending of ordered the quantities
