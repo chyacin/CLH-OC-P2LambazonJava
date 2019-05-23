@@ -65,7 +65,7 @@ public class Cart {
     	 // CH : discover the value per unit
     	double quantity = 0;
     	for (CartLine cartLine: cartLineList) {
-    		quantity = quantity + (cartLine.getQuantity());
+    		quantity = quantity + cartLine.getQuantity();
     	}	
         return getTotalValue()/quantity;
     }
