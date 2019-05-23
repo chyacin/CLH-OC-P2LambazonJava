@@ -5,13 +5,16 @@ import java.util.List;
 import java.util.Optional;
 
 public class Cart {
+	
+	List<CartLine> cartLineList = new ArrayList<>();
+	//CH : A new list was created to facilitate the cartline
 
     /**
      *
      * @return the actual cartline list
      */
     public List<CartLine> getCartLineList() {
-        return new ArrayList<>();
+        return cartLineList;
     }
 
     /**
@@ -19,9 +22,18 @@ public class Cart {
      * @param product getProductById to be added
      * @param quantity the quantity
      */
-    public void addItem(Product product, int quantity) {
-        // TODO implement the method
+    public void addItem(Product product, int quantity)
+    {
+        
+    	for (CartLine cartLine : cartLineList) {
+    		if (cartLine.getProduct().equals(product)){
+    			cartLine.setQuantity(quantity+cartLine.getQuantity());
+    	        return;		
+    		}
+    	}
+        cartLineList.add(new CartLine(product, quantity));	
     }
+
 
     /**
      * Removes a getProductById form the cart
@@ -37,9 +49,12 @@ public class Cart {
      */
     public double getTotalValue()
     {
-         //TODO implement the method
-        return 0.0;
-
+    	//CH : product multiple by price
+    	double totalValue = 0;
+    	 for(CartLine cartLine: cartLineList) {
+    		totalValue = totalValue +(cartLine.getQuantity()*cartLine.getProduct().getPrice());
+    	}	
+          return totalValue;
     }
 
     /**
@@ -47,8 +62,12 @@ public class Cart {
      */
     public double getAverageValue()
     {
-        // TODO implement the method
-        return 0.0;
+    	 // CH : discover the value per unit
+    	double quantity = 0;
+    	for (CartLine cartLine: cartLineList) {
+    		quantity = quantity + cartLine.getQuantity();
+    	}	
+        return getTotalValue()/quantity;
     }
 
     /**
@@ -57,10 +76,14 @@ public class Cart {
      */
     public Product findProductInCartLines(Long productId)
     {
-        // TODO implement the method
+    	//CH : find product in the cartline by Id
+    	for(CartLine cartLine: cartLineList) {
+    	   if (cartLine.getProduct().getId().equals(productId)) {  		 
+    	   }
+    	     return cartLine.getProduct();	 
+    	}
         return null;
     }
-
     /**
      *
      * @param index index of the cartLine
