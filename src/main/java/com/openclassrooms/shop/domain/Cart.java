@@ -28,7 +28,7 @@ public class Cart {
     	for (CartLine cartLine : cartLineList) {
     		if (cartLine.getProduct().equals(product)){
     			cartLine.setQuantity(quantity+cartLine.getQuantity());
-    	  return;		
+    	        return;		
     		}
     	}
         cartLineList.add(new CartLine(product, quantity));	
